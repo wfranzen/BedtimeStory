@@ -1,60 +1,147 @@
 import SwiftUI
-import AVFoundation
 
-struct RecordingView: View {
-    @State private var audioRecorder: AVAudioRecorder?
-    @State private var isRecording = false
-    @State private var text: String = ""
-    @State private var user: User?
+struct ContentView: View {
+    
+    @ObservedObject var vm = VoiceViewModel()
+    
+    @State private var showingList = false
+    @State private var showingAlert = false
+    
+    @State private var effect1 = false
+    @State private var effect2 = false
 
+    
     var body: some View {
-        VStack {
-            TextField("Enter text here", text: $text)
-                .padding()
-                .frame(height: 40)
-                .border(Color.black, width: 2)
+        
+        ZStack{
 
-            HStack {
-                Button(action: {
-                       if self.isRecording {
-                           try? self.audioRecorder?.stop()
-                           self.audioRecorder = nil
-                       } else {
-                           let recordingSession = AVAudioSession.sharedInstance()
-                           try? recordingSession.setCategory(.playAndRecord, mode: .default)
-                           try? recordingSession.setActive(true)
-                           let settings = [
-                               AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-                               AVSampleRateKey: 12000,
-                               AVNumberOfChannelsKey: 1,
-                               AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-                           ]
-                           let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a");
-                           self.audioRecorder = try? AVAudioRecorder(url: audioFilename, settings: settings);
-                           self.audioRecorder?.delegate = self;
-                           self.audioRecorder?.record();
-                           try? self.isRecording.toggle();
-                       }
-                   }) {
-                       Text(self.isRecording ? "Stop Recording" : "Start Recording");
-                   }) {
-                    Image(systemName: isRecording ? "stop.circle" : "circle")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(isRecording ? .red : .green)
+                
+            
+            VStack{
+                HStack{
+
+                    Spacer()
+                    
+                    Text("Book Name")
+                        .foregroundColor(.black)
+                        .font(.system(size: 20 , weight : .bold))
+                    
+                    Spacer()
+
+                    Button(action: {
+                        if vm.isRecording == true {
+                            vm.stopRecording()
+                        }
+                        vm.fetchAllRecording()
+                        showingList.toggle()
+                    }) {
+                        Image(systemName: "list.bullet")
+                            .foregroundColor(.black)
+                            .font(.system(size: 20, weight: .bold))
+                    }.sheet(isPresented: $showingList, content: {
+                        recordingListView()
+                    })
+                    
                 }
-                .padding()
-                .border(Color.black, width: 2)
+                
+                Spacer()
+                
+                if vm.isRecording {
+                    
+                    VStack(alignment : .leading , spacing : -5){
+                        HStack (spacing : 3) {
+                            Image(systemName: vm.isRecording && vm.toggleColor ? "circle.fill" : "circle")
+                                .font(.system(size:10))
+                                .foregroundColor(.red)
+                            Text("Rec")
+                        }
+                        Text(vm.timer)
+                            .font(.system(size:60))
+                            .foregroundColor(.black)
+                    }
+                    
+                } else {
+                    VStack{
+                        Text("Press the Recording Button below")
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                        Text("and Stop when its done")
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                    }.frame(width: 300, height: 100, alignment: .center)
+                    
+                    
+                }
+                
+                Spacer()
+                Spacer()
+                
+                ZStack {
+                    
+                    Circle()
+                        .frame(width: 70, height: 70)
+                        .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
+                        .scaleEffect(effect2 ? 1 : 0.8)
+                        .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(1))
+                        .onAppear(){
+                            self.effect2.toggle()
+                        }
+                    
+                    Circle()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                        .scaleEffect(effect2 ? 1 : 1.5)
+                        .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(2))
+                        .onAppear(){
+                            self.effect1.toggle()
+                        }
+                    
+                    
+                    Image(systemName: vm.isRecording ? "stop.circle.fill" : "mic.circle.fill")
+                        .foregroundColor(.black)
+                        .font(.system(size: 45))
+                        .onTapGesture {
+                            if vm.isRecording == true {
+                                vm.stopRecording()
+                            } else {
+                                vm.startRecording()
+                                
+                            }
+                        }
+                    
+                }
+                
+                
+                
+                Spacer()
+                
             }
+            .padding(.leading,25)
+            .padding(.trailing,25)
+            .padding(.top , 70)
+            
+            Circle()
+                .frame(width: 230, height: 230)
+                .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
+                .scaleEffect(effect2 ? 1 : 0.8)
+                .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(0.5))
+                .offset(x: 160, y: 400)
+            
+            Circle()
+                .frame(width: 230, height: 230)
+                .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
+                .scaleEffect(effect2 ? 1 : 0.8)
+                .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(1))
+                .offset(x: 110, y: 400)
+            
+            
         }
+   
     }
 }
 
-extension RecordingView: AVAudioRecorderDelegate {
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        if flag {
-            // Save the recording and the text to the user's account
-            user?.addRecording(audioURL: recorder.url, text: text)
-        }
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

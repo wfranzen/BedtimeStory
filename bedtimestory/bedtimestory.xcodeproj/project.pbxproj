@@ -15,6 +15,7 @@
 		659184C42985DDCD00675CF5 /* VoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659184C32985DDCD00675CF5 /* VoiceViewModel.swift */; };
 		659184C72985DE3D00675CF5 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659184C62985DE3D00675CF5 /* Recording.swift */; };
 		659184CA2985DE8100675CF5 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659184C92985DE8100675CF5 /* Time.swift */; };
+		659833162985EA7300931545 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659833152985EA7300931545 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		659184C32985DDCD00675CF5 /* VoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceViewModel.swift; sourceTree = "<group>"; };
 		659184C62985DE3D00675CF5 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		659184C92985DE8100675CF5 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		659833152985EA7300931545 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				659184C62985DE3D00675CF5 /* Recording.swift */,
+				659833152985EA7300931545 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				659184CA2985DE8100675CF5 /* Time.swift in Sources */,
 				659184B22985D29F00675CF5 /* ContentView.swift in Sources */,
+				659833162985EA7300931545 /* Book.swift in Sources */,
 				659184C72985DE3D00675CF5 /* Recording.swift in Sources */,
 				659184C42985DDCD00675CF5 /* VoiceViewModel.swift in Sources */,
 				659184B02985D29F00675CF5 /* bedtimestoryApp.swift in Sources */,
