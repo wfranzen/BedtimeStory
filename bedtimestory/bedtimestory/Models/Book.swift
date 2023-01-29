@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 struct Page {
     let text: String
-    let image: UIImage?
+    let image: UIImage? = nil
 }
 
 struct Book {
@@ -18,6 +18,6 @@ struct Book {
 
     init(title: String) {
         self.title = title
-        self.pages = []
+        self.pages = [Page(text:"Test text text4iohfrbfofe n eduovbqhi0r 0gro jhior"), Page(text:"second page")]
     }
 }

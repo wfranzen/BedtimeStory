@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let bookID: Int
+
     @ObservedObject var vm = VoiceViewModel()
     
     @State private var showingList = false
@@ -9,22 +11,20 @@ struct ContentView: View {
     
     @State private var effect1 = false
     @State private var effect2 = false
-
+    init(newBookID: Int) {
+        self.bookID = newBookID
+        self.vm = VoiceViewModel(bookid: bookID)
+    }
     
     var body: some View {
         
         ZStack{
-
-                
             
             VStack{
                 HStack{
 
                     Spacer()
                     
-                    Text("Book Name")
-                        .foregroundColor(.black)
-                        .font(.system(size: 20 , weight : .bold))
                     
                     Spacer()
 
@@ -41,11 +41,13 @@ struct ContentView: View {
                     }.sheet(isPresented: $showingList, content: {
                         recordingListView()
                     })
+                    Spacer()
                     
                 }
-                
                 Spacer()
-                
+                VStack{
+                    BookView(book: Book(title:"Book name"))
+                }
                 if vm.isRecording {
                     
                     VStack(alignment : .leading , spacing : -5){
@@ -74,12 +76,11 @@ struct ContentView: View {
                 }
                 
                 Spacer()
-                Spacer()
-                
+
                 ZStack {
                     
                     Circle()
-                        .frame(width: 70, height: 70)
+                        .frame(width: 150, height: 150)
                         .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
                         .scaleEffect(effect2 ? 1 : 0.8)
                         .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(1))
@@ -88,7 +89,7 @@ struct ContentView: View {
                         }
                     
                     Circle()
-                        .frame(width: 50, height: 50)
+                        .frame(width: 70, height: 70)
                         .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                         .scaleEffect(effect2 ? 1 : 1.5)
                         .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(2))
@@ -99,7 +100,7 @@ struct ContentView: View {
                     
                     Image(systemName: vm.isRecording ? "stop.circle.fill" : "mic.circle.fill")
                         .foregroundColor(.black)
-                        .font(.system(size: 45))
+                        .font(.system(size: 65))
                         .onTapGesture {
                             if vm.isRecording == true {
                                 vm.stopRecording()
@@ -119,20 +120,7 @@ struct ContentView: View {
             .padding(.leading,25)
             .padding(.trailing,25)
             .padding(.top , 70)
-            
-            Circle()
-                .frame(width: 230, height: 230)
-                .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
-                .scaleEffect(effect2 ? 1 : 0.8)
-                .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(0.5))
-                .offset(x: 160, y: 400)
-            
-            Circle()
-                .frame(width: 230, height: 230)
-                .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
-                .scaleEffect(effect2 ? 1 : 0.8)
-                .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(1))
-                .offset(x: 110, y: 400)
+
             
             
         }
@@ -142,6 +130,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(newBookID: 4803)
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct bedtimestoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(newBookID: 4783)
         }
     }
 }

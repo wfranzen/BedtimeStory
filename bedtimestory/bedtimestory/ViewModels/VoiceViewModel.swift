@@ -5,9 +5,10 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
     
     var audioRecorder : AVAudioRecorder!
     var audioPlayer : AVAudioPlayer!
-    
     var indexOfPlayer = 0
-    
+    var bookID:Int = 0
+    var pageNum = 1
+    var timestamps = {}
     @Published var isRecording : Bool = false
     
     @Published var recordingsList = [Recording]()
@@ -20,13 +21,16 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
     
     
     var playingURL : URL?
-    
+
+    convenience init(bookid:Int) {
+        self.init()
+        self.bookID = bookid
+    }
     override init(){
         super.init()
-        
         fetchAllRecording()
-        
     }
+    
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
        
@@ -37,7 +41,9 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
         }
     }
     
-  
+    func mergeRecordings() {
+        
+    }
     
     func startRecording() {
         
@@ -50,7 +56,7 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
         }
         
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileName = path.appendingPathComponent("CO-Voice : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+        let fileName = path.appendingPathComponent("\(self.bookID) Rec:\(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
         
         
         
@@ -90,15 +96,23 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
         
         timerCount!.invalidate()
         blinkingCount!.invalidate()
+        // To be fixed: This should be in a nextRecording() func w stopRecording() optionally deleting recording to restart page reading
+        if recordingsList.count > 1 {
+            mergeRecordings()
+        }
         
     }
     
+    func fetchRecording(title: String) {
+        
+    }
     
     func fetchAllRecording(){
         
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        print(path)
         let directoryContents = try! FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
-
+        print(directoryContents)
         for i in directoryContents {
             recordingsList.append(Recording(fileURL : i, createdAt:getFileDate(for: i), isPlaying: false))
         }
@@ -150,7 +164,6 @@ class VoiceViewModel : NSObject, ObservableObject , AVAudioPlayerDelegate{
         }
     }
     
- 
     func deleteRecording(url : URL) {
         
         do {
