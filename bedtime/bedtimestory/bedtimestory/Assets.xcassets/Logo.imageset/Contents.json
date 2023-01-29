@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "DALL·E 2023-01-29 02.24.03 - A circular image of children's book image of a child being read a story by a parent far away represented in a bubble.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "DALL·E 2023-01-29 02.24.03 - A circular image of children's book image of a child being read a story by a parent far away represented in a bubble-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "DALL·E 2023-01-29 02.24.03 - A circular image of children's book image of a child being read a story by a parent far away represented in a bubble-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

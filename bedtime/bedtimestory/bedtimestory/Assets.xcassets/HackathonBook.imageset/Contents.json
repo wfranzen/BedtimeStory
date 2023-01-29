@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "DALL·E 2023-01-29 08.04.13 - A cover for a fictional children's book about a young boy going to a hackathon, called _The Hackathon_.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "DALL·E 2023-01-29 08.04.13 - A cover for a fictional children's book about a young boy going to a hackathon, called _The Hackathon_-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "DALL·E 2023-01-29 08.04.13 - A cover for a fictional children's book about a young boy going to a hackathon, called _The Hackathon_-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
