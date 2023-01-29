@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0927A13E2985F086001E4F79 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0927A13D2985F086001E4F79 /* FirebaseAuth */; };
+		0927A1402985F086001E4F79 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0927A13F2985F086001E4F79 /* FirebaseFirestore */; };
+		0927A1422985F086001E4F79 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0927A1412985F086001E4F79 /* FirebaseFirestoreSwift */; };
+		0927A1442985F1AE001E4F79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0927A1432985F1AE001E4F79 /* GoogleService-Info.plist */; };
+		0927A1472985F22B001E4F79 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0927A1462985F22B001E4F79 /* FirebaseAnalytics */; };
+		0927A1492985F2B7001E4F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927A1482985F2B7001E4F79 /* AppDelegate.swift */; };
 		659184B02985D29F00675CF5 /* bedtimestoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659184AF2985D29F00675CF5 /* bedtimestoryApp.swift */; };
 		659184B22985D29F00675CF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659184B12985D29F00675CF5 /* ContentView.swift */; };
 		659184B42985D2A100675CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 659184B32985D2A100675CF5 /* Assets.xcassets */; };
@@ -25,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0927A1432985F1AE001E4F79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0927A1482985F2B7001E4F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		659184AC2985D29F00675CF5 /* bedtimestory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bedtimestory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659184AF2985D29F00675CF5 /* bedtimestoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bedtimestoryApp.swift; sourceTree = "<group>"; };
 		659184B12985D29F00675CF5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +56,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0927A13E2985F086001E4F79 /* FirebaseAuth in Frameworks */,
+				0927A1402985F086001E4F79 /* FirebaseFirestore in Frameworks */,
+				0927A1472985F22B001E4F79 /* FirebaseAnalytics in Frameworks */,
+				0927A1422985F086001E4F79 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +92,9 @@
 				659184BF2985DD5B00675CF5 /* Views */,
 				659184AF2985D29F00675CF5 /* bedtimestoryApp.swift */,
 				659184B32985D2A100675CF5 /* Assets.xcassets */,
+				0927A1432985F1AE001E4F79 /* GoogleService-Info.plist */,
 				659184B52985D2A100675CF5 /* Preview Content */,
+				0927A1482985F2B7001E4F79 /* AppDelegate.swift */,
 			);
 			path = bedtimestory;
 			sourceTree = "<group>";
@@ -156,6 +170,12 @@
 			dependencies = (
 			);
 			name = bedtimestory;
+			packageProductDependencies = (
+				0927A13D2985F086001E4F79 /* FirebaseAuth */,
+				0927A13F2985F086001E4F79 /* FirebaseFirestore */,
+				0927A1412985F086001E4F79 /* FirebaseFirestoreSwift */,
+				0927A1462985F22B001E4F79 /* FirebaseAnalytics */,
+			);
 			productName = bedtimestory;
 			productReference = 659184AC2985D29F00675CF5 /* bedtimestory.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +204,10 @@
 				Base,
 			);
 			mainGroup = 659184A32985D29F00675CF5;
+			packageReferences = (
+				0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0927A1452985F22B001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 659184AD2985D29F00675CF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,6 +224,7 @@
 			files = (
 				659184B72985D2A100675CF5 /* Preview Assets.xcassets in Resources */,
 				659184B42985D2A100675CF5 /* Assets.xcassets in Resources */,
+				0927A1442985F1AE001E4F79 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65BCABD529860458002DB781 /* User.swift in Sources */,
+				0927A1492985F2B7001E4F79 /* AppDelegate.swift in Sources */,
 				659184CA2985DE8100675CF5 /* Time.swift in Sources */,
 				659184B22985D29F00675CF5 /* ContentView.swift in Sources */,
 				659833162985EA7300931545 /* Book.swift in Sources */,
@@ -363,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sepuri.bedtimestory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willfranzen.bedtimestory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -391,7 +417,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sepuri.bedtimestory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willfranzen.bedtimestory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -421,6 +447,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		0927A1452985F22B001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0927A13D2985F086001E4F79 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0927A13F2985F086001E4F79 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0927A1412985F086001E4F79 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		0927A1462985F22B001E4F79 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0927A13C2985F086001E4F79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 659184A42985D29F00675CF5 /* Project object */;
 }
