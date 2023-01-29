@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		652A747429864766000F5194 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A747329864766000F5194 /* RecordingView.swift */; };
-		652A747629864791000F5194 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A747529864791000F5194 /* BookView.swift */; };
 		652A7478298647AC000F5194 /* RecordingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A7477298647AC000F5194 /* RecordingListView.swift */; };
 		652A747B298647C4000F5194 /* VoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A747A298647C4000F5194 /* VoiceViewModel.swift */; };
 		652A747E298647FA000F5194 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A747D298647FA000F5194 /* Book.swift */; };
@@ -17,6 +16,7 @@
 		652A748629864848000F5194 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A748529864848000F5194 /* Time.swift */; };
 		652A74892986486B000F5194 /* RecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A74882986486B000F5194 /* RecordingService.swift */; };
 		652A748B29864886000F5194 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A748A29864886000F5194 /* BookService.swift */; };
+		657C7C1929865E5D008221AF /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C7C1829865E5D008221AF /* PlaybackView.swift */; };
 		65C90811298639F9009D8A53 /* bedtimestoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C90810298639F9009D8A53 /* bedtimestoryApp.swift */; };
 		65C90813298639F9009D8A53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C90812298639F9009D8A53 /* ContentView.swift */; };
 		65C90815298639FB009D8A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C90814298639FB009D8A53 /* Assets.xcassets */; };
@@ -28,11 +28,12 @@
 		65C9082B29863D66009D8A53 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 65C9082A29863D66009D8A53 /* FirebaseAnalytics */; };
 		65C9082D29863D66009D8A53 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 65C9082C29863D66009D8A53 /* FirebaseAuth */; };
 		65C9082F29863D66009D8A53 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 65C9082E29863D66009D8A53 /* FirebaseFirestore */; };
+		65E7F0F5298668780056BFEF /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7F0F4298668780056BFEF /* GlobalVar.swift */; };
+		65E7F0F7298670CC0056BFEF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7F0F6298670CC0056BFEF /* LibraryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		652A747329864766000F5194 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
-		652A747529864791000F5194 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		652A7477298647AC000F5194 /* RecordingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListView.swift; sourceTree = "<group>"; };
 		652A747A298647C4000F5194 /* VoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceViewModel.swift; sourceTree = "<group>"; };
 		652A747D298647FA000F5194 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -41,12 +42,15 @@
 		652A748529864848000F5194 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		652A74882986486B000F5194 /* RecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingService.swift; sourceTree = "<group>"; };
 		652A748A29864886000F5194 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		657C7C1829865E5D008221AF /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		65C9080D298639F9009D8A53 /* bedtimestory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bedtimestory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C90810298639F9009D8A53 /* bedtimestoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bedtimestoryApp.swift; sourceTree = "<group>"; };
 		65C90812298639F9009D8A53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		65C90814298639FB009D8A53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65C90817298639FB009D8A53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65C9082629863C9A009D8A53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65E7F0F4298668780056BFEF /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		65E7F0F6298670CC0056BFEF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				652A747329864766000F5194 /* RecordingView.swift */,
-				652A747529864791000F5194 /* BookView.swift */,
 				652A7477298647AC000F5194 /* RecordingListView.swift */,
+				657C7C1829865E5D008221AF /* PlaybackView.swift */,
+				65E7F0F6298670CC0056BFEF /* LibraryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				652A748529864848000F5194 /* Time.swift */,
+				65E7F0F4298668780056BFEF /* GlobalVar.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -248,14 +254,16 @@
 				652A7478298647AC000F5194 /* RecordingListView.swift in Sources */,
 				652A748629864848000F5194 /* Time.swift in Sources */,
 				652A747E298647FA000F5194 /* Book.swift in Sources */,
+				65E7F0F5298668780056BFEF /* GlobalVar.swift in Sources */,
 				65C90811298639F9009D8A53 /* bedtimestoryApp.swift in Sources */,
 				652A747B298647C4000F5194 /* VoiceViewModel.swift in Sources */,
 				652A74832986482F000F5194 /* User.swift in Sources */,
 				652A747429864766000F5194 /* RecordingView.swift in Sources */,
 				652A748B29864886000F5194 /* BookService.swift in Sources */,
-				652A747629864791000F5194 /* BookView.swift in Sources */,
 				652A748029864817000F5194 /* Recording.swift in Sources */,
 				652A74892986486B000F5194 /* RecordingService.swift in Sources */,
+				65E7F0F7298670CC0056BFEF /* LibraryView.swift in Sources */,
+				657C7C1929865E5D008221AF /* PlaybackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,8 +398,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationLandscapeRight;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,7 +410,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -419,8 +428,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationLandscapeRight;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,7 +440,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

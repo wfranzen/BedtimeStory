@@ -1,53 +1,75 @@
 import SwiftUI
 
+var pgNumber = 0
+var pageRecorded = false
+struct RecBookView: View {
+    
+    @Binding public var shouldHide: Bool
+    let book: Book
+    @State var pageNum = 0
+    var body: some View {
+        VStack {
+            Text(self.book.title)
+                .foregroundColor(.black)
+                .font(.system(size: 30 , weight : .bold))
+            PageView(page: book.pages[self.pageNum]).frame(alignment: .center)
+            
+            VStack {
+                Text("Page \(self.pageNum+1) / \(self.book.pages.count)")
+                Spacer()
+                if !self.$shouldHide.wrappedValue {
+                    Button(action: {
+                        self.shouldHide = true
+                        pgNumber = pgNumber + 1
+                        self.pageNum = self.pageNum + 1
+                        if (self.pageNum + 1 == self.book.pages.count) {
+                            self.shouldHide = true
+                        }
+                        
+                    }) {
+                        Text("Next").padding()
+                    }.background(Color.gray)
+                }
+            }
+        }
+    }
+}
+
 struct RecordingView: View {
     
     let bookID: Int
-
+    let book:Book
+    @State public var shouldHide = true
     @ObservedObject var vm = VoiceViewModel()
-    
     @State private var showingList = false
     @State private var showingAlert = false
     
     @State private var effect1 = false
     @State private var effect2 = false
+    
     init(newBookID: Int) {
         self.bookID = newBookID
+        self.book = Book(title:"Book name")
         self.vm = VoiceViewModel(bookid: bookID)
     }
     
     var body: some View {
         
         ZStack{
-            
             VStack{
+                
                 HStack{
 
                     Spacer()
                     
-                    
-                    Spacer()
-
-                    Button(action: {
-                        if vm.isRecording == true {
-                            vm.stopRecording()
-                        }
-                        vm.fetchAllRecording()
-                        showingList.toggle()
-                    }) {
-                        Image(systemName: "list.bullet")
-                            .foregroundColor(.black)
-                            .font(.system(size: 20, weight: .bold))
-                    }.sheet(isPresented: $showingList, content: {
-                        recordingListView()
-                    })
-                    Spacer()
-                    
-                }
+                } // end HStack
+                
                 Spacer()
+                
                 VStack{
-                    BookView(book: Book(title:"Book name"))
+                    RecBookView(shouldHide: $shouldHide, book: book)
                 }
+                
                 if vm.isRecording {
                     
                     VStack(alignment : .leading , spacing : -5){
@@ -104,6 +126,10 @@ struct RecordingView: View {
                         .onTapGesture {
                             if vm.isRecording == true {
                                 vm.stopRecording()
+                                if (pgNumber+1 != self.book.pages.count) {
+                                    self.shouldHide = false
+                                }
+                                
                             } else {
                                 vm.startRecording()
                                 

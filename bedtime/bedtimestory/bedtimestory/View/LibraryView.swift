@@ -1,15 +1,28 @@
-//
-//  LibraryView.swift
-//  bedtimestory
-//
-//  Created by Tarun  on 1/29/23.
-//
-
+import Foundation
 import SwiftUI
 
 struct LibraryView: View {
+    @State var loggedIn: Bool = true
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if loggedIn {
+            VStack {
+                Text("Hello, World!")
+                
+                Text("You are signed in")
+                
+                Button(action: {
+                    let AppView = AppViewModel()
+                    AppView.signOut()
+                    loggedIn = false
+                }, label: {
+                    Text("Sign Out")
+                        .foregroundColor(Color.blue)
+                        .padding()
+                })
+            }
+        }else{
+            SignInView()
+        }
     }
 }
 

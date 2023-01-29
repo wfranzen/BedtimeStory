@@ -8,6 +8,7 @@ struct Recording : Equatable {
     
 }
 
+/*
 struct MergedRecording {
     let fileURL: URL
     let createdAt: Date
@@ -15,4 +16,4 @@ struct MergedRecording {
     var isPlaying: Bool? = false
     let timestampDict: [String: Int]
 }
-
+*/

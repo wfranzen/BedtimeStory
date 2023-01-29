@@ -25,7 +25,8 @@ struct bedtimestoryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewModel = AppViewModel()
+            ContentView().environmentObject(viewModel)
         }
     }
 }

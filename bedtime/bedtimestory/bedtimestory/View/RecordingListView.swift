@@ -59,5 +59,6 @@ struct recordingListView: View {
 struct recordingListView_Previews: PreviewProvider {
     static var previews: some View {
         recordingListView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -1,11 +1,60 @@
 import SwiftUI
 
-struct RecordingView: View {
+var pageNumber = 0
+
+struct BookView: View {
+    
+    @State var shouldHide = false
+    let book: Book
+    
+    @State var pageNum = 0
+    var body: some View {
+        VStack {
+            Text(self.book.title)
+                .foregroundColor(.black)
+                .font(.system(size: 30 , weight : .bold))
+            PageView(page: book.pages[self.pageNum]).frame(alignment: .center)
+            
+            VStack {
+                Text("Page \(self.pageNum+1) / \(self.book.pages.count)")
+                
+                if !self.$shouldHide.wrappedValue {
+                    Button("Next") {
+                        pageNumber = pageNumber + 1
+                        self.pageNum = self.pageNum + 1
+                        if (self.pageNum + 1 == self.book.pages.count) {
+                            self.shouldHide = true
+                        }
+                    }.background(Color.mint).hoverEffect(.lift)
+                }
+            }
+        }
+    }
+}
+
+struct PageView: View {
+    
+    let page: Page
+    var body: some View {
+        GeometryReader{r in
+            VStack(alignment: .center) {
+                page.image.resizable().scaledToFit()
+            }.frame(width: r.size.width, height: r.size.height/1.5, alignment: .center).background(Color.mint)
+        }
+    }
+}
+
+struct PlaybackView: View {
     
     let bookID: Int
-
     @ObservedObject var vm = VoiceViewModel()
-    
+    var recording:Recording? {
+        print(pageNumber)
+        print(self.vm.recordingsList)
+        return self.vm.recordingsList[pageNumber]
+    }
+    // Service to get book from ID
+    var bookView = BookView(book: Book(title:"Book name"))
     @State private var showingList = false
     @State private var showingAlert = false
     
@@ -19,98 +68,51 @@ struct RecordingView: View {
     var body: some View {
         
         ZStack{
-            
             VStack{
+                
+                
                 HStack{
-
                     Spacer()
-                    
-                    
                     Spacer()
-
-                    Button(action: {
-                        if vm.isRecording == true {
-                            vm.stopRecording()
-                        }
-                        vm.fetchAllRecording()
-                        showingList.toggle()
-                    }) {
-                        Image(systemName: "list.bullet")
-                            .foregroundColor(.black)
-                            .font(.system(size: 20, weight: .bold))
-                    }.sheet(isPresented: $showingList, content: {
-                        recordingListView()
-                    })
                     Spacer()
-                    
-                }
-                Spacer()
-                VStack{
-                    BookView(book: Book(title:"Book name"))
-                }
-                if vm.isRecording {
-                    
-                    VStack(alignment : .leading , spacing : -5){
-                        HStack (spacing : 3) {
-                            Image(systemName: vm.isRecording && vm.toggleColor ? "circle.fill" : "circle")
-                                .font(.system(size:10))
-                                .foregroundColor(.red)
-                            Text("Rec")
-                        }
-                        Text(vm.timer)
-                            .font(.system(size:60))
-                            .foregroundColor(.black)
-                    }
-                    
-                } else {
-                    VStack{
-                        Text("Press the Recording Button below")
-                            .foregroundColor(.black)
-                            .fontWeight(.bold)
-                        Text("and Stop when its done")
-                            .foregroundColor(.black)
-                            .fontWeight(.bold)
-                    }.frame(width: 300, height: 100, alignment: .center)
-                    
-                    
                 }
                 
                 Spacer()
-
-                ZStack {
-                    
-                    Circle()
-                        .frame(width: 150, height: 150)
-                        .foregroundColor(Color(#colorLiteral(red: 0.4157493109, green: 0.8572631, blue: 0.9686274529, alpha: 0.4940355314)))
-                        .scaleEffect(effect2 ? 1 : 0.8)
-                        .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(1))
-                        .onAppear(){
-                            self.effect2.toggle()
-                        }
-                    
-                    Circle()
-                        .frame(width: 70, height: 70)
-                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                        .scaleEffect(effect2 ? 1 : 1.5)
-                        .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true).speed(2))
-                        .onAppear(){
-                            self.effect1.toggle()
-                        }
-                    
-                    
-                    Image(systemName: vm.isRecording ? "stop.circle.fill" : "mic.circle.fill")
-                        .foregroundColor(.black)
-                        .font(.system(size: 65))
-                        .onTapGesture {
-                            if vm.isRecording == true {
-                                vm.stopRecording()
-                            } else {
-                                vm.startRecording()
-                                
-                            }
-                        }
-                    
+                
+                VStack{
+                    bookView
                 }
+                
+                VStack{
+                    HStack{
+                        
+                        VStack(alignment:.leading) {
+                            Text("\(recording!.fileURL.lastPathComponent)")
+                        }
+                        VStack {
+                            Spacer()
+                            
+                            Button(action: {
+                                if self.recording!.isPlaying == true {
+                                    vm.pausePlaying(url: self.recording!.fileURL)
+                                }else{
+                                    vm.startPlaying(url: self.recording!.fileURL)
+                                }
+                            }) {
+                                Image(systemName: ((self.recording!.isPlaying)) ? "stop.fill" : "play.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size:30))
+                            }
+                            
+                        }
+                        
+                    }.padding()
+                }.padding(.horizontal,10)
+                    .frame(width: 370, height: 85)
+                    .background(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
+                    .cornerRadius(30)
+                    .shadow(color: Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)).opacity(0.3), radius: 10, x: 0, y: 10)
+                Spacer()
                 
                 
                 
@@ -128,9 +130,3 @@ struct RecordingView: View {
     }
 }
 
-struct RecordingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordingView(newBookID: 4803)
-            .previewInterfaceOrientation(.landscapeRight)
-    }
-}
