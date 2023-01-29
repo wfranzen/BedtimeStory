@@ -2,8 +2,9 @@
 //  bedtimestoryApp.swift
 //  bedtimestory
 //
-//  Created by Tarun  on 1/28/23.
+//  Created by Tarun  on 1/29/23.
 //
+
 import SwiftUI
 import FirebaseCore
 
@@ -18,16 +19,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct YourApp: App {
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-
-  var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        ContentView(newBookID: 723489)
-      }
+struct bedtimestoryApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
     }
-  }
 }

@@ -17,7 +17,7 @@ struct BookView: View {
                     if (self.currentPage+1 == self.book.pages.count) {
                         self.shouldHide = true
                     }
-                    }.padding().background(Color.mint).hoverEffect(.lift)
+                    }.background(Color.mint).hoverEffect(.lift)
             }
         }
     }
